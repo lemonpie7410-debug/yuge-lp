@@ -1,0 +1,803 @@
+:root{
+    --beige:#D9C7B3;
+    --beige-deep:#B99E7E;
+    --charcoal:#2A2A2A;
+    --charcoal-soft:#3A3632;
+    --cream:#F6F1E8;
+    --ink:#241F1B;
+    --gold:#A9814F;
+    --water:#33534A;
+    --water-light:#5C7F73;
+    --line: rgba(42,42,42,0.12);
+    --max-w: 440px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{background:var(--charcoal);}
+  body{
+    font-family:'Shippori Mincho', serif;
+    color:var(--ink);
+    background:var(--cream);
+    max-width:var(--max-w);
+    margin:0 auto;
+    position:relative;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  .serif{font-family:'Shippori Mincho', serif;}
+  .en{font-family:'Shippori Mincho', serif; letter-spacing:0.14em;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{padding:0 24px;}
+  .eyebrow{
+    font-size:11px; letter-spacing:0.32em; font-weight:600;
+    text-transform:uppercase; color:var(--gold);
+  }
+
+  /* ---------- HERO OFFER ---------- */
+  .hero-offer{
+    position:relative; z-index:2; margin-top:18px; padding:14px 16px 15px;
+    border:1px solid rgba(217,199,179,0.34); background:rgba(20,18,16,0.42);
+    backdrop-filter:blur(4px); border-radius:5px;
+  }
+  .hero-offer-label{
+    font-size:9px; letter-spacing:0.18em; color:rgba(217,199,179,0.72);
+  }
+  .hero-offer-price{
+    margin-top:5px; display:flex; align-items:baseline; flex-wrap:wrap; gap:8px;
+  }
+  .hero-offer-time{font-size:15px; font-weight:600; color:var(--beige);}
+  .hero-old-price{font-size:11px; color:rgba(217,199,179,0.55); text-decoration:line-through;}
+  .hero-new-price{font-size:26px; line-height:1; font-weight:600; color:#fff;}
+  .hero-new-price span{font-size:11px; margin-left:2px; font-weight:400;}
+  .hero-off-badge{
+    font-family:'Shippori Mincho',serif; font-size:10px; font-weight:600;
+    letter-spacing:0.08em; padding:5px 8px; border:1px solid var(--gold);
+    color:var(--beige); border-radius:3px;
+  }
+
+  /* ---------- RESERVATION CHECK ---------- */
+  .reserve-check{margin-top:56px; padding:52px 24px 58px; background:#EEE7DC;}
+  .reserve-check .head-block{padding:0;}
+  .reserve-check-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:24px;}
+  .reserve-check-card{padding:16px 14px 17px; background:var(--cream); border:1px solid var(--line); border-radius:6px;}
+  .rc-num{font-size:10px; letter-spacing:0.12em; color:var(--gold);}
+  .rc-title{margin-top:7px; font-size:14px; font-weight:600;}
+  .rc-value{margin-top:6px; font-size:12px; line-height:1.5; font-weight:600; color:var(--water);}
+  .reserve-check-card p{margin-top:6px; font-size:10.5px; line-height:1.7; color:#6b655e;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    color:var(--beige);
+    padding-top:0;
+  }
+
+  /* -- ファーストビュー（写真） -- */
+  .hero-visual{
+    position:relative;
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    padding:24px 22px 32px;
+    overflow:hidden;
+  }
+  .hero-slider{
+    position:absolute; inset:0; overflow:hidden;
+  }
+  .hero-slider-track{
+    display:flex; width:300%; height:100%;
+    animation:heroSlide 13.5s ease-in-out infinite;
+  }
+  .hero-slide{
+    flex:0 0 33.3333%; height:100%;
+    background-size:cover; background-position:center 30%;
+    filter:saturate(0.96);
+  }
+  @keyframes heroSlide{
+    0%, 7.41%      { transform:translateX(0%); }
+    33.33%, 40.74% { transform:translateX(-33.3333%); }
+    66.67%, 74.07% { transform:translateX(-66.6667%); }
+    100%           { transform:translateX(0%); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hero-slider-track{ animation:none; }
+  }
+  .hero-scrim{
+    position:absolute; inset:0;
+    background:
+      radial-gradient(120% 55% at 50% 0%, rgba(0,0,0,0.06), transparent 55%),
+      linear-gradient(180deg, rgba(20,18,16,0.10) 0%, rgba(20,18,16,0.18) 40%, rgba(16,14,12,0.62) 78%, rgba(14,12,10,0.82) 100%);
+  }
+  .steam{
+    position:absolute; inset:0; pointer-events:none; opacity:0.5; z-index:1;
+  }
+  .steam span{
+    position:absolute; bottom:-10%;
+    width:2px; height:46%;
+    background:linear-gradient(180deg, transparent, rgba(217,199,179,0.55) 35%, rgba(217,199,179,0.0));
+    border-radius:2px;
+    filter:blur(1.5px);
+    animation:rise 7s ease-in infinite;
+  }
+  .steam span:nth-child(1){left:14%; animation-delay:0s; height:52%;}
+  .steam span:nth-child(2){left:32%; animation-delay:1.4s; height:40%;}
+  .steam span:nth-child(3){left:50%; animation-delay:2.6s; height:58%;}
+  .steam span:nth-child(4){left:68%; animation-delay:0.7s; height:44%;}
+  .steam span:nth-child(5){left:85%; animation-delay:3.4s; height:36%;}
+  @keyframes rise{
+    0%{transform:translateY(0) translateX(0) scaleY(1); opacity:0;}
+    12%{opacity:0.7;}
+    70%{opacity:0.35;}
+    100%{transform:translateY(-120%) translateX(10px) scaleY(1.4); opacity:0;}
+  }
+
+  .hero-logo-box{
+    position:relative; z-index:2;
+    display:inline-block;
+    width:fit-content;
+  }
+  .hero-logo-box img{ width:126px; display:block; }
+  .hero-logo-mark{
+    display:flex; flex-direction:column; align-items:flex-start; gap:3px;
+  }
+  .hero-logo-jp{
+    font-family:'Shippori Mincho', serif; font-size:34px; font-weight:600;
+    line-height:1; color:#fff; letter-spacing:0.04em;
+    text-shadow:0 2px 12px rgba(0,0,0,0.4);
+  }
+  .hero-logo-en{
+    font-family:'Shippori Mincho', serif; font-size:19px; font-weight:600;
+    letter-spacing:0.16em; color:#fff;
+    text-shadow:0 2px 10px rgba(0,0,0,0.4);
+  }
+  .hero-logo-sub{
+    font-size:11px; letter-spacing:0.12em; color:rgba(255,255,255,0.88); font-weight:500;
+    text-shadow:0 1px 8px rgba(0,0,0,0.4);
+  }
+
+  .hero-catch{
+    position:absolute; left:24px; right:24px; top:50%; transform:translateY(-50%);
+    z-index:2; text-align:center;
+  }
+  .hero-catch .catch-quote{
+    font-size:32px; line-height:1.5; font-weight:600; color:#fff;
+    text-shadow:0 2px 14px rgba(0,0,0,0.35);
+  }
+  .hero-catch .catch-anniv{
+    margin-top:10px; font-family:'Shippori Mincho',serif; font-weight:600;
+    font-size:15px; letter-spacing:0.06em; color:rgba(255,255,255,0.88);
+  }
+
+  .hero-location{
+    position:absolute; right:22px; bottom:56px; z-index:2;
+    font-size:13px; letter-spacing:0.06em; color:#fff;
+    text-shadow:0 1px 8px rgba(0,0,0,0.35);
+  }
+  .hero-scroll{
+    position:absolute; left:50%; bottom:22px; transform:translateX(-50%); z-index:2;
+    display:flex; flex-direction:column; align-items:center; gap:4px;
+    font-size:10px; letter-spacing:0.1em; color:rgba(255,255,255,0.75);
+  }
+  .hero-scroll span{ font-size:12px; animation:scrollcue 1.8s ease-in-out infinite; }
+  @keyframes scrollcue{
+    0%,100%{ transform:translateY(0); opacity:0.6; }
+    50%{ transform:translateY(4px); opacity:1; }
+  }
+
+  /* -- 予約オファー・CTA -- */
+  .hero-content{
+    position:relative;
+    background:var(--charcoal-soft);
+    padding:36px 24px 40px;
+  }
+  .hero-copy{
+    position:relative; z-index:2;
+  }
+  .hero-copy .lead{
+    font-size:22px; line-height:1.85; font-weight:600; color:#F3ECE1;
+  }
+  .hero-copy .lead em{
+    font-style:normal; color:var(--beige);
+    border-bottom:1px solid rgba(217,199,179,0.5);
+  }
+  .hero-copy .sub{
+    margin-top:14px; font-size:13px; line-height:2; color:rgba(243,236,225,0.62);
+  }
+  .anniv-badge{
+    margin:24px auto 0; display:flex; width:fit-content; align-items:center; gap:8px;
+    border:1px solid rgba(217,199,179,0.45); padding:8px 14px; border-radius:100px;
+    font-size:12px; letter-spacing:0.06em; color:var(--beige); position:relative; z-index:2;
+  }
+  .anniv-badge .num{ font-family:'Shippori Mincho', serif; font-size:15px; font-weight:600;}
+
+  .hero-cta{
+    margin-top:28px; display:flex; flex-direction:column; gap:10px; position:relative; z-index:2;
+  }
+  .btn-primary{
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    background:var(--beige); color:var(--charcoal);
+    padding:16px 20px; border-radius:4px; font-weight:600; font-size:15px;
+    letter-spacing:0.04em;
+  }
+  .btn-primary .arrow{font-family:'Shippori Mincho',serif; font-size:16px;}
+  .btn-secondary{
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    border:1px solid rgba(217,199,179,0.4); color:var(--beige);
+    padding:14px 20px; border-radius:4px; font-size:13px; letter-spacing:0.04em;
+  }
+  .hero-meta{
+    margin-top:20px; display:flex; gap:18px; font-size:11px; color:rgba(217,199,179,0.55);
+    position:relative; z-index:2;
+  }
+
+  /* ---------- BUTTON INTERACTIONS ---------- */
+  .btn-primary, .btn-secondary, .btn-book, .cc-cta, .s-book{
+    transition: transform 0.15s ease, background-color 0.15s ease;
+  }
+  .btn-primary:hover, .btn-secondary:hover, .btn-book:hover, .cc-cta:hover, .s-book:hover{
+    transform: translateY(-2px);
+  }
+  .btn-primary:hover, .btn-book:hover{ background-color: var(--beige-deep); }
+  .camp-card .cc-cta:hover{ background-color: var(--charcoal-soft); }
+  .sticky-cta .s-book:hover{ background-color: var(--charcoal-soft); }
+  .btn-primary:active, .btn-secondary:active, .btn-book:active, .cc-cta:active, .s-book:active{
+    transform: translateY(0);
+  }
+
+  /* ---------- SCROLL REVEAL ---------- */
+  .reveal-up{
+    opacity:0; transform:translateY(28px);
+    transition:opacity 3s ease, transform 3s ease;
+  }
+  .reveal-up.is-visible{ opacity:1; transform:translateY(0); }
+
+  .reveal-left{
+    opacity:0; transform:translateX(-28px);
+    transition:opacity 3s ease, transform 3s ease;
+  }
+  .reveal-left.is-visible{ opacity:1; transform:translateX(0); }
+
+  .reveal-d1{ transition-delay:.12s; }
+  .reveal-d2{ transition-delay:.24s; }
+  .reveal-d3{ transition-delay:.36s; }
+  .reveal-d4{ transition-delay:.48s; }
+  .reveal-d5{ transition-delay:.6s; }
+  .reveal-d6{ transition-delay:.72s; }
+
+  /* ---------- HERO ON-LOAD ENTRANCE ---------- */
+  @keyframes heroFadeIn{ from{opacity:0;} to{opacity:1;} }
+  @keyframes heroFloatLeft{ from{opacity:0; transform:translateX(-24px);} to{opacity:1; transform:translateX(0);} }
+
+  .hero-entrance{ opacity:0; }
+  .hero-entrance-catch{ animation:heroFadeIn 3s ease forwards; animation-delay:.2s; }
+  .hero-entrance-logo,
+  .hero-entrance-anniv,
+  .hero-entrance-location,
+  .hero-entrance-scroll{ animation:heroFadeIn 3s ease forwards; animation-delay:2.2s; }
+  .hero-entrance-cta{ animation:heroFloatLeft 3s ease forwards; animation-delay:4.4s; }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal-up, .reveal-left{ opacity:1 !important; transform:none !important; transition:none !important; }
+    .hero-entrance{ opacity:1 !important; animation:none !important; }
+  }
+
+  /* ---------- SECTION SHARED ---------- */
+  section{padding:64px 0 0;}
+  #commitment, #amenities, #access, #faq{ margin-top:56px; }
+  .head-block{padding:0 24px; margin-bottom:28px;}
+  .head-block .en{display:block; font-size:13px; color:var(--gold); margin-bottom:8px;}
+  .head-block h2{
+    font-size:24px; line-height:1.6; font-weight:600; color:var(--ink);
+  }
+  .head-block p{margin-top:12px; font-size:13px; line-height:2; color:#5c5650;}
+
+  /* ---------- CONCEPT / EPISODE ---------- */
+  .concept{
+    background:var(--charcoal); color:var(--beige); padding:56px 24px 0;
+    position:relative;
+  }
+  .concept .quote-mark{
+    font-family:'Shippori Mincho', serif; font-size:56px; color:var(--beige-deep);
+    line-height:0.5; opacity:0.7;
+  }
+  .concept blockquote{
+    font-family:'Shippori Mincho', serif;
+    font-size:20px; line-height:1.9; margin-top:8px; color:#F3ECE1; font-weight:600;
+  }
+  .concept .attribution{
+    margin-top:18px; font-size:12px; color:rgba(217,199,179,0.55); line-height:2;
+  }
+  .concept .divider{
+    width:32px; height:1px; background:rgba(217,199,179,0.4); margin:22px 0;
+  }
+  .concept-photo{
+    margin-top:30px; padding-bottom:56px;
+  }
+  .concept-photo img{ border-radius:6px; }
+  .concept-photo .cap{ margin-top:10px; font-size:11px; color:rgba(217,199,179,0.5); letter-spacing:0.06em;}
+
+  /* ---------- STATS STRIP ---------- */
+  .stats{
+    display:grid; grid-template-columns:repeat(3,1fr);
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    margin:0 24px;
+  }
+  .stats div{
+    padding:22px 8px; text-align:center; border-right:1px solid var(--line);
+  }
+  .stats div:last-child{border-right:none;}
+  .stats .num{
+    font-family:'Shippori Mincho', serif; font-size:28px; font-weight:600; color:var(--gold);
+  }
+  .stats .lbl{margin-top:4px; font-size:10.5px; color:#6b655e; letter-spacing:0.02em; line-height:1.6;}
+
+  /* ---------- TEMPERATURE TABLE ---------- */
+  .temp-cards{padding:0 24px; display:flex; flex-direction:column; gap:12px;}
+  .temp-item{ }
+  .temp-item img{
+    width:100%; height:180px; object-fit:cover; display:block;
+    border-radius:6px; margin-top:10px;
+  }
+  .temp-card{
+    background:#fff; border:1px solid var(--line); border-radius:6px;
+    padding:18px 18px; display:flex; align-items:center; gap:16px;
+  }
+  .temp-card .deg{
+    font-family:'Shippori Mincho', serif; font-size:24px; color:var(--charcoal);
+    min-width:78px; font-weight:600;
+  }
+  .temp-card .deg span{font-size:12px; font-weight:500; color:var(--gold); display:block; margin-bottom:2px;}
+  .temp-card .desc-title{font-size:14px; font-weight:600; color:var(--ink);}
+  .temp-card .desc-sub{margin-top:3px; font-size:11.5px; color:#7a746c; line-height:1.8;}
+
+  .water-row{
+    margin:14px 24px 0; background:var(--water); color:#EFEAE0; border-radius:6px;
+    padding:18px 18px; display:flex; gap:14px;
+  }
+  .water-row .wcol{flex:1;}
+  .water-row .wcol .deg{font-family:'Shippori Mincho', serif; font-size:24px; font-weight:600;}
+  .water-row .wcol .lbl{font-size:11px; margin-top:2px; color:rgba(239,234,224,0.7);}
+  .water-photo{ margin:14px 24px 0; border-radius:6px; overflow:hidden; }
+  .water-photo img{ width:100%; height:180px; object-fit:cover; display:block; }
+
+  /* ---------- COMMITMENT LIST ---------- */
+  .commit-photo{ margin:14px 24px 28px; border-radius:6px; overflow:hidden; position:relative; }
+  .commit-photo img{ width:100%; height:190px; object-fit:cover; }
+  .commit-photo .cap{
+    position:absolute; left:14px; bottom:12px; color:#fff; font-size:11px;
+    letter-spacing:0.08em; text-shadow:0 1px 6px rgba(0,0,0,0.5);
+  }
+  .commit-list{padding:0 24px; display:flex; flex-direction:column;}
+  .commit-item{
+    display:flex; gap:14px; padding:18px 0; border-bottom:1px solid var(--line);
+  }
+  .commit-item .ci-num{
+    font-family:'Shippori Mincho', serif; font-size:14px; color:var(--gold); padding-top:2px; min-width:20px;
+  }
+  .commit-item h3{font-size:14.5px; font-weight:600; color:var(--ink);}
+  .commit-item p{margin-top:6px; font-size:12px; line-height:1.9; color:#6b655e;}
+
+  /* ---------- AMENITIES ---------- */
+  .amenity-photo{ margin:0 24px 20px; border-radius:6px; overflow:hidden; }
+  .amenity-photo img{ width:100%; height:210px; object-fit:cover; object-position:center 30%; }
+  .chip-row{
+    display:flex; flex-wrap:wrap; gap:8px; padding:0 24px;
+  }
+  .chip{
+    font-size:11.5px; padding:8px 14px; border:1px solid var(--line); border-radius:100px; color:#5c5650;
+  }
+
+  /* ---------- GALLERY ---------- */
+  .gallery{ padding-top:64px; }
+  .gallery-frame{ padding:0 24px; }
+  .gallery-stage{
+    position:relative; border-radius:8px; overflow:hidden;
+    aspect-ratio:4/5; background:#111;
+  }
+  .gallery-track{
+    display:flex; height:100%; overflow-x:auto; scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch; scroll-behavior:smooth;
+  }
+  .gallery-track::-webkit-scrollbar{ display:none; }
+  .gallery-slide{
+    position:relative; flex:0 0 100%; height:100%; scroll-snap-align:start;
+  }
+  .gallery-slide img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .gallery-slide figcaption{
+    position:absolute; left:0; right:0; bottom:0; z-index:2;
+    background:var(--charcoal); color:var(--beige);
+    font-size:13px; letter-spacing:0.04em; padding:12px 18px;
+  }
+  .gallery-nav{
+    position:absolute; top:0; bottom:44px; width:50%; z-index:3;
+    background:none; border:none; padding:0; margin:0; cursor:pointer;
+  }
+  .gallery-prev{ left:0; }
+  .gallery-next{ right:0; }
+  .gallery-progress{
+    display:flex; justify-content:center; gap:6px; margin-top:14px;
+  }
+  .gallery-progress span{
+    width:18px; height:3px; border-radius:2px; background:var(--line);
+    transition:background 0.2s ease;
+  }
+  .gallery-progress span.active{ background:var(--charcoal); }
+  .gallery-hint{
+    margin-top:10px; text-align:center; font-size:11px; color:#9a9186;
+  }
+
+  /* ---------- CAMPAIGN CARDS ---------- */
+  .campaign{background:var(--charcoal); padding:60px 0 64px; margin-top:56px;}
+  .campaign .head-block h2, .campaign .head-block .en{color:var(--beige);}
+  .campaign .head-block p{color:rgba(217,199,179,0.6);}
+  .camp-scroller{
+    display:flex; gap:14px; overflow-x:auto; padding:4px 24px 12px;
+    scroll-snap-type:x mandatory;
+  }
+  .camp-scroller::-webkit-scrollbar{display:none;}
+  .camp-card{
+    scroll-snap-align:start; flex:0 0 84%;
+    background:var(--cream); border-radius:8px; overflow:hidden;
+    display:flex; flex-direction:column;
+  }
+  .camp-card .cc-top{
+    background:var(--beige); padding:16px 18px 14px; position:relative;
+  }
+  .camp-card .cc-top-photo{
+    background-size:cover; background-position:center 30%;
+    padding:52px 18px 14px;
+  }
+  .camp-card .cc-top-photo::before{
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(20,18,16,0.15) 0%, rgba(20,18,16,0.62) 100%);
+  }
+  /* .camp-card prefix keeps specificity above .camp-card .cc-top's background shorthand */
+  .camp-card .cc-top-1{ background-image:url('images/image4.jpeg'); }
+  .camp-card .cc-top-2{ background-image:url('images/pair-sauna.jpg'); }
+  .camp-card .cc-top-3{ background-image:url('images/morning-view.jpg'); }
+  .cc-tag-onphoto, .cc-title-onphoto{ position:relative; z-index:2; }
+  .cc-tag-onphoto{ color:#F3ECE1 !important; opacity:0.9 !important; }
+  .cc-title-onphoto{ color:#fff !important; }
+  .camp-card .cc-tag{
+    font-size:10.5px; letter-spacing:0.08em; color:var(--charcoal); font-weight:600; opacity:0.75;
+  }
+  .camp-card .cc-title{
+    margin-top:6px; font-family:'Shippori Mincho', serif; font-size:19px; font-weight:600; color:var(--charcoal);
+  }
+  .camp-card .cc-body{padding:18px; flex:1; display:flex; flex-direction:column;}
+  .camp-card .price-row{display:flex; align-items:baseline; gap:8px;}
+  .camp-card .price-old{font-size:13px; color:#a39c92; text-decoration:line-through;}
+  .camp-card .price-new{font-family:'Shippori Mincho', serif; font-size:28px; font-weight:600; color:var(--charcoal);}
+  .camp-card .price-new small{font-size:13px; font-family:'Shippori Mincho',serif; font-weight:500;}
+  .camp-card .off-badge{
+    margin-top:4px; display:inline-block; font-size:10.5px; color:#fff; background:var(--gold);
+    padding:3px 8px; border-radius:100px; width:fit-content;
+  }
+  .camp-card .cc-desc{margin-top:12px; font-size:11.5px; line-height:1.9; color:#6b655e; flex:1;}
+  .camp-card .cc-cta{
+    margin-top:16px; text-align:center; background:var(--charcoal); color:var(--beige);
+    padding:12px; border-radius:4px; font-size:12.5px; font-weight:600;
+  }
+  .camp-note{
+    margin:18px 24px 0; font-size:10.5px; line-height:2.1; color:rgba(217,199,179,0.5);
+    border-top:1px solid rgba(217,199,179,0.15); padding-top:14px;
+  }
+
+  /* ---------- ACCESS ---------- */
+  .access-card{
+    margin:0 24px; background:#fff; border:1px solid var(--line); border-radius:6px; overflow:hidden;
+  }
+  .access-map{ height:150px; position:relative; background:#EFE7DA; overflow:hidden; }
+  .access-map svg{ width:100%; height:100%; display:block; }
+  .access-map iframe{ width:100%; height:100%; display:block; border:0; }
+  .access-photo{ height:150px; overflow:hidden; }
+  .access-photo img{ width:100%; height:100%; object-fit:cover; }
+  .access-info{padding:18px;}
+  .access-info .name{font-size:14px; font-weight:600;}
+  .access-info .addr{margin-top:6px; font-size:12px; color:#6b655e; line-height:1.9;}
+  .access-info .row{
+    display:flex; justify-content:space-between; padding:10px 0; border-top:1px dashed var(--line);
+    font-size:12px; margin-top:10px;
+  }
+  .access-info .row span:first-child{color:#8a847b;}
+
+  /* ---------- FAQ ---------- */
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{
+    width:100%; border:0; background:transparent; color:inherit; text-align:left;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:18px 0; font-family:inherit; font-size:13.5px; font-weight:600; cursor:pointer;
+  }
+  .faq-q .q-mark{font-family:'Shippori Mincho', serif; color:var(--gold); margin-right:10px;}
+  .faq-q .toggle{font-size:18px; color:var(--gold); transition:transform 0.25s;}
+  .faq-item.open .toggle{transform:rotate(45deg);}
+  .faq-a{max-height:0; overflow:hidden; transition:max-height 0.3s ease;}
+  .faq-item.open .faq-a{max-height:200px;}
+  .faq-a p{font-size:12px; line-height:1.95; color:#6b655e; padding-bottom:18px;}
+
+  /* ---------- FINAL CTA（最終ゴール） ---------- */
+  .final-cta{
+    position:relative; margin-top:64px;
+    background:linear-gradient(180deg, var(--charcoal) 0%, #1c1a17 100%);
+    color:var(--beige); padding:52px 24px 40px; text-align:center;
+    overflow:hidden;
+  }
+  .final-cta .badge-stamp{ width:76px; margin:0 auto 18px; position:relative; z-index:2; opacity:0.92; }
+  .final-cta .en{display:block; margin-bottom:10px;}
+  .final-cta h2{
+    font-family:'Shippori Mincho', serif; font-size:26px; line-height:1.75; font-weight:600; color:#F3ECE1;
+    position:relative; z-index:2;
+  }
+  .final-cta .sub{
+    margin-top:12px; font-size:12.5px; line-height:2; color:rgba(217,199,179,0.65); position:relative; z-index:2;
+  }
+  .final-price-box{
+    margin-top:26px; background:rgba(217,199,179,0.08); border:1px solid rgba(217,199,179,0.25);
+    border-radius:8px; padding:20px; position:relative; z-index:2; text-align:left;
+  }
+  .final-price-box .fp-row{
+    display:flex; justify-content:space-between; align-items:center; font-size:13px;
+    padding:8px 0;
+  }
+  .final-price-box .fp-row + .fp-row{border-top:1px dashed rgba(217,199,179,0.2);}
+  .final-price-box .fp-row .fp-name{color:rgba(217,199,179,0.75);}
+  .final-price-box .fp-row .fp-price{font-family:'Shippori Mincho', serif; font-size:17px; color:var(--beige); font-weight:600;}
+  .final-cta .code{
+    margin-top:18px; font-size:11px; color:rgba(217,199,179,0.55); letter-spacing:0.05em; position:relative; z-index:2;
+  }
+  .final-cta .code b{color:var(--gold); letter-spacing:0.12em;}
+
+  .final-actions{margin-top:26px; display:flex; flex-direction:column; gap:12px; position:relative; z-index:2;}
+  .btn-book{
+    background:var(--beige); color:var(--charcoal); padding:18px; border-radius:4px;
+    font-weight:600; font-size:16px; letter-spacing:0.03em;
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    box-shadow:0 10px 30px rgba(217,199,179,0.15);
+  }
+  .btn-book .arrow{font-family:'Shippori Mincho',serif; font-size:17px;}
+  .final-cta .deadline{
+    margin-top:20px; font-size:10.5px; color:rgba(217,199,179,0.45); line-height:2; position:relative; z-index:2;
+  }
+
+  /* ---------- STICKY CTA ---------- */
+  .sticky-cta{
+    position:sticky; bottom:0; left:0; right:0; z-index:50;
+    background:rgba(246,241,232,0.94); backdrop-filter:blur(6px);
+    border-top:1px solid var(--line);
+    display:flex; gap:0; padding:14px 18px;
+    max-width:var(--max-w); margin:0 auto;
+  }
+  .sticky-cta .s-book{
+    flex:1 1 100%; display:flex; align-items:center; justify-content:center; gap:8px;
+    background:var(--charcoal); color:var(--beige); border-radius:6px;
+    font-size:17px; font-weight:700; letter-spacing:0.03em;
+    padding:18px; box-shadow:0 8px 22px rgba(20,18,16,0.2);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:40px 24px 100px; text-align:center;}
+  footer .flogo{ width:118px; margin:0 auto; }
+  footer .fsns{margin-top:18px; display:flex; align-items:center; justify-content:center; gap:16px; font-size:11px; color:#8a847b; letter-spacing:0.08em;}
+  footer .sns-btn{
+    display:flex; align-items:center; justify-content:center;
+    width:36px; height:36px; border-radius:50%;
+    border:1px solid var(--line); color:#8a847b;
+    transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+  }
+  footer .sns-btn svg{ width:18px; height:18px; }
+  footer .sns-btn:hover{
+    color:#fff; background-color:var(--charcoal); border-color:var(--charcoal);
+  }
+  footer .flegal{margin-top:20px; font-size:10px; color:#a39c92; line-height:2.1;}
+
+/* =========================================================
+     PC (デスクトップ) 版 — 1024px以上
+     ========================================================= */
+  @media (min-width: 1024px){
+    :root{ --max-w: 1180px; }
+
+    body{ max-width:none; margin:0; overflow-x:visible; }
+
+    /* 見出しブロックは読みやすい幅に収めて中央寄せ */
+    .head-block{ max-width:720px; margin-left:auto; margin-right:auto; text-align:center; }
+    .head-block .en{ font-size:14px; }
+    .head-block h2{ font-size:32px; }
+    .head-block p{ font-size:14px; }
+    .campaign .head-block, #commitment .head-block{ text-align:center; }
+
+    /* ---- HERO ---- */
+    .hero-visual{ padding:56px 64px 64px; }
+    .hero-logo-box img{ width:150px; }
+    .hero-logo-jp{ font-size:46px; }
+    .hero-logo-en{ font-size:24px; }
+    .hero-logo-sub{ font-size:15px; }
+
+    .hero-catch{ left:0; right:0; max-width:960px; margin:0 auto; }
+    .hero-catch .catch-quote{ font-size:60px; }
+    .hero-catch .catch-anniv{ font-size:20px; margin-top:16px; }
+
+    .hero-location{ right:56px; bottom:64px; font-size:15px; }
+    .hero-scroll{ bottom:36px; font-size:15px; }
+
+    .hero-content{ padding:80px 24px 88px; }
+    .hero-content > *{ max-width:600px; margin-left:auto; margin-right:auto; }
+    .hero-copy{ text-align:center; }
+    .hero-copy .lead{ font-size:32px; }
+    .hero-copy .sub{ font-size:14.5px; }
+    .anniv-badge{ display:flex; width:fit-content; }
+    .hero-offer{ padding:20px 26px; }
+    .hero-cta{ flex-direction:row; justify-content:center; gap:16px; }
+    .btn-primary, .btn-secondary{ flex:0 0 auto; padding:26px 52px; font-size:20px; }
+    .hero-meta{ justify-content:center; }
+
+    /* ---- GALLERY ---- */
+    .gallery-frame{ max-width:820px; margin:0 auto; }
+    .gallery-stage{ aspect-ratio:16/9; }
+
+    /* ---- CAMPAIGN CARDS：横スクロール→グリッド ---- */
+    .camp-scroller{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
+      max-width:var(--max-w); margin:4px auto 12px; overflow:visible;
+    }
+    .camp-card{ flex:none; }
+    .camp-card .cc-title{ font-size:21px; }
+
+    /* ---- 設備の特徴：3カラム ---- */
+    .temp-cards{
+      flex-direction:row; max-width:var(--max-w); margin:0 auto; gap:20px; padding:0 24px;
+    }
+    .temp-item{ flex:1; display:flex; flex-direction:column; }
+    .temp-card{ flex-direction:column; align-items:flex-start; gap:10px; flex:1; }
+    .temp-item img{ height:200px; }
+
+    .water-row{ max-width:var(--max-w); margin:16px auto 0; padding:22px 28px; }
+    .water-photo{ max-width:var(--max-w); margin:16px auto 0; }
+    .water-photo img{ height:460px; }
+
+    /* facilities内の外気浴写真も横幅に合わせる */
+    #facilities .commit-photo{ max-width:var(--max-w); margin:16px auto 28px; }
+    #facilities .commit-photo img{ height:460px; }
+
+    /* ---- こだわり：写真＋リストの2カラム ---- */
+    #commitment{
+      display:grid; grid-template-columns:1fr 1fr; column-gap:48px;
+      max-width:var(--max-w); margin:56px auto 0; padding:0 24px 64px;
+    }
+    #commitment .head-block{ grid-column:1 / -1; max-width:720px; margin:0 auto 40px; }
+    #commitment .commit-photo{ margin:0; align-self:start; }
+    #commitment .commit-photo img{ height:320px; }
+    #commitment .commit-list{ padding:0; }
+
+    /* ---- アメニティ ---- */
+    #amenities{ max-width:var(--max-w); margin:56px auto 0; padding:0 24px 8px; }
+    .amenity-photo{ max-width:820px; margin:0 auto 24px; }
+    .amenity-photo img{ height:320px; }
+    .chip-row{ max-width:820px; margin:0 auto; padding:0; justify-content:center; }
+
+    /* ---- アクセス：写真/地図とインフォの2カラム ---- */
+    #access{ max-width:var(--max-w); margin:56px auto 0; padding:0 24px 8px; }
+    .access-card{
+      max-width:900px; margin:0 auto;
+      display:grid; grid-template-columns:1fr 1fr; grid-template-rows:auto auto;
+    }
+    .access-photo{ grid-column:1; grid-row:1; height:200px; }
+    .access-map{ grid-column:1; grid-row:2; height:200px; }
+    .access-info{ grid-column:2; grid-row:1 / 3; padding:24px 28px; }
+
+    /* ---- 予約前確認：4カラム ---- */
+    .reserve-check{ padding:64px 24px 72px; }
+    .reserve-check .head-block{ max-width:720px; }
+    .reserve-check-grid{
+      grid-template-columns:repeat(4,1fr); max-width:var(--max-w); margin:32px auto 0; gap:16px;
+    }
+
+    /* ---- FAQ ---- */
+    #faq .wrap{ max-width:720px; margin:0 auto; }
+
+    /* ---- FINAL CTA ---- */
+    .final-cta{ padding:88px 24px 72px; }
+    .final-cta > *{ max-width:560px; margin-left:auto; margin-right:auto; }
+    .final-cta h2{ font-size:32px; }
+    .final-actions{ max-width:400px; }
+
+    /* ---- STICKY CTA：右寄せのフローティング風 ---- */
+    .sticky-cta{
+      max-width:none; padding:18px 56px; justify-content:center;
+    }
+    .sticky-cta .s-book{ flex:0 0 auto; width:300px; }
+
+    /* ---- FOOTER ---- */
+    footer{ padding:64px 24px 72px; }
+  
+  /* ---------- デスクトップ：文字サイズ・色の強化 ---------- */
+  .eyebrow{ font-size:15px; letter-spacing:0.32em; font-weight:600;
+    text-transform:uppercase; color:var(--gold); }
+  .hero-offer-label{ font-size:15px; letter-spacing:0.18em; color:rgba(230,218,204,0.95); }
+  .hero-old-price{ font-size:15px; color:rgba(225,210,195,0.88); text-decoration:line-through; }
+  .hero-new-price span{ font-size:15px; margin-left:2px; font-weight:400; }
+  .hero-off-badge{ font-family:'Shippori Mincho',serif; font-size:14px; font-weight:600;
+    letter-spacing:0.08em; padding:5px 8px; border:1px solid var(--gold);
+    color:var(--beige); border-radius:3px; }
+  .rc-num{ font-size:14px; letter-spacing:0.12em; color:var(--gold); }
+  .rc-value{ margin-top:6px; font-size:14px; line-height:1.5; font-weight:600; color:var(--water); }
+  .reserve-check-card p{ margin-top:6px; font-size:14.5px; line-height:1.7; color:#332f2a; }
+  .hero-logo-sub{ font-size:15px; letter-spacing:0.12em; color:rgba(255,255,255,0.97); font-weight:500;
+    text-shadow:0 1px 8px rgba(0,0,0,0.4); }
+  .hero-catch .catch-anniv{ margin-top:10px; font-family:'Shippori Mincho',serif; font-weight:600;
+    font-size:15px; letter-spacing:0.06em; color:rgba(255,255,255,0.97); }
+  .hero-location{ position:absolute; right:22px; bottom:56px; z-index:2;
+    font-size:15px; letter-spacing:0.06em; color:#fff;
+    text-shadow:0 1px 8px rgba(0,0,0,0.35); }
+  .hero-scroll{ position:absolute; left:50%; bottom:22px; transform:translateX(-50%); z-index:2;
+    display:flex; flex-direction:column; align-items:center; gap:4px;
+    font-size:14px; letter-spacing:0.1em; color:rgba(255,255,255,0.97); }
+  .hero-scroll span{ font-size:14px; animation:scrollcue 1.8s ease-in-out infinite; }
+  .hero-copy .sub{ margin-top:14px; font-size:15px; line-height:2; color:rgba(243,236,225,0.62); }
+  .anniv-badge{ margin:24px auto 0; display:flex; width:fit-content; align-items:center; gap:8px;
+    border:1px solid rgba(217,199,179,0.45); padding:8px 14px; border-radius:100px;
+    font-size:14px; letter-spacing:0.06em; color:var(--beige); position:relative; z-index:2; }
+  .btn-primary{ display:flex; align-items:center; justify-content:center; gap:8px;
+    background:var(--beige); color:var(--charcoal);
+    padding:25px 28px; border-radius:5px; font-weight:700; font-size:20px;
+    letter-spacing:0.04em; }
+  .btn-primary .arrow{ font-family:'Shippori Mincho',serif; font-size:21px; }
+  .btn-secondary{ display:flex; align-items:center; justify-content:center; gap:8px;
+    border:1.5px solid rgba(217,199,179,0.55); color:var(--beige);
+    padding:22px 28px; border-radius:5px; font-size:17px; font-weight:600; letter-spacing:0.04em; }
+  .hero-meta{ margin-top:20px; display:flex; gap:18px; font-size:15px; color:rgba(225,210,195,0.88);
+    position:relative; z-index:2; }
+  .head-block .en{ display:block; font-size:15px; color:var(--gold); margin-bottom:8px; }
+  .head-block p{ margin-top:12px; font-size:15px; line-height:2; color:#5c5650; }
+  .concept .attribution{ margin-top:18px; font-size:14px; color:rgba(225,210,195,0.88); line-height:2; }
+  .concept-photo .cap{ margin-top:10px; font-size:15px; color:rgba(225,210,195,0.85); letter-spacing:0.06em; }
+  .stats .lbl{ margin-top:4px; font-size:14.5px; color:#332f2a; letter-spacing:0.02em; line-height:1.6; }
+  .temp-card .deg{ font-family:'Shippori Mincho', serif; font-size:24px; color:var(--charcoal);
+    min-width:78px; font-weight:600; flex-shrink:0; white-space:nowrap; }
+  .temp-card .deg span{ font-size:14px; font-weight:500; color:var(--gold); display:block; margin-bottom:2px; }
+  .temp-card .desc-title{ font-size:17px; font-weight:700; color:var(--ink); }
+  .temp-card .desc-sub{ margin-top:4px; font-size:16px; color:#3a352f; line-height:1.8; }
+  .water-row .wcol .lbl{ font-size:15px; margin-top:2px; color:rgba(245,241,233,0.97); }
+  .water-photo img{ width:100%; height:360px; object-fit:cover; display:block; }
+  .commit-photo .cap{ position:absolute; left:14px; bottom:12px; color:#fff; font-size:15px;
+    letter-spacing:0.08em; text-shadow:0 1px 6px rgba(0,0,0,0.5); }
+  .commit-item p{ margin-top:6px; font-size:14px; line-height:1.9; color:#332f2a; }
+  .chip{ font-size:16px; padding:8px 14px; border:1px solid var(--line); border-radius:100px; color:#5c5650; }
+  .gallery-slide figcaption{ position:absolute; left:0; right:0; bottom:0; z-index:2;
+    background:var(--charcoal); color:var(--beige);
+    font-size:15px; letter-spacing:0.04em; padding:12px 18px; }
+  .gallery-hint{ margin-top:10px; text-align:center; font-size:15px; color:#443f38; }
+  .camp-card .cc-tag{ font-size:14.5px; letter-spacing:0.08em; color:var(--charcoal); font-weight:600; opacity:0.75; }
+  .camp-card .price-old{ font-size:15px; color:#4a453e; text-decoration:line-through; }
+  .camp-card .price-new small{ font-size:15px; font-family:'Shippori Mincho',serif; font-weight:500; }
+  .camp-card .off-badge{ margin-top:4px; display:inline-block; font-size:14.5px; color:#fff; background:var(--gold);
+    padding:3px 8px; border-radius:100px; width:fit-content; }
+  .camp-card .cc-desc{ margin-top:12px; font-size:16px; line-height:1.9; color:#332f2a; flex:1; }
+  .camp-card .cc-cta{ margin-top:16px; text-align:center; background:var(--charcoal); color:var(--beige);
+    padding:12px; border-radius:4px; font-size:14.5px; font-weight:600; }
+  .camp-note{ margin:18px 24px 0; font-size:14.5px; line-height:2.1; color:rgba(225,210,195,0.85);
+    border-top:1px solid rgba(217,199,179,0.15); padding-top:14px; }
+  .access-info .addr{ margin-top:6px; font-size:14px; color:#332f2a; line-height:1.9; }
+  .access-info .row{ display:flex; justify-content:space-between; padding:10px 0; border-top:1px dashed var(--line);
+    font-size:14px; margin-top:10px; }
+  .access-info .row span:first-child{ color:#3a352f; }
+  .faq-q{ width:100%; border:0; background:transparent; color:inherit; text-align:left;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:18px 0; font-family:inherit; font-size:16px; font-weight:600; cursor:pointer; }
+  .faq-a p{ font-size:14px; line-height:1.95; color:#332f2a; padding-bottom:18px; }
+  .final-cta .sub{ margin-top:12px; font-size:14.5px; line-height:2; color:rgba(225,210,195,0.82); position:relative; z-index:2; }
+  .final-price-box .fp-row{ display:flex; justify-content:space-between; align-items:center; font-size:15px;
+    padding:8px 0; }
+  .final-cta .code{ margin-top:18px; font-size:15px; color:rgba(225,210,195,0.88); letter-spacing:0.05em; position:relative; z-index:2; }
+  .final-cta .deadline{ margin-top:20px; font-size:14.5px; color:rgba(225,210,195,0.82); line-height:2; position:relative; z-index:2; }
+  footer .fsns{ margin-top:18px; display:flex; align-items:center; justify-content:center; gap:16px; font-size:15px; color:#3a352f; letter-spacing:0.08em; }
+  footer .sns-btn{ display:flex; align-items:center; justify-content:center;
+    width:36px; height:36px; border-radius:50%;
+    border:1px solid var(--line); color:#3a352f;
+    transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease; }
+  footer .flegal{ margin-top:20px; font-size:14px; color:#4a453e; line-height:2.1; }
+  #facilities .commit-photo img{ height:360px; }
+}
+
+  @media (min-width: 1280px){
+    :root{ --max-w: 1240px; }
+    .hero-catch .catch-quote{ font-size:66px; }
+  }
